@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <netdb.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
@@ -32,6 +33,7 @@ int main () {
 	
 	int t;
 	while(sock){
+		memset(buffer, 0, sizeof(buffer));
 		t = recvfrom(sock, buffer, sizeof(buffer), 0, (struct sockaddr *)&from, &len);
 		if(t < 0){
 			printf("Error receiving\n");
