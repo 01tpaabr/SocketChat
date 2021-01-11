@@ -34,13 +34,15 @@ int main () {
 	int t;
 	while(sock){
 		memset(buffer, 0, sizeof(buffer));
-		t = recvfrom(sock, buffer, sizeof(buffer), 0, (struct sockaddr *)&from, &len);
+		t = recvfrom(sock, buffer, 256, 0, (struct sockaddr *)&from, &len);
+		
 		if(t < 0){
 			printf("Error receiving\n");
 			exit(EXIT_FAILURE);
 		}
 		
-		printf("Received: %s \n", buffer);
+		printf("Received Message: %s \n", buffer);
+
 		t = sendto(sock, "OK\n", 21, 0, (struct sockaddr *)&from, len);
 		if(t < 0) {
 			printf("Error sending message \n");

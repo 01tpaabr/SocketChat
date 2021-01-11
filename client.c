@@ -40,8 +40,9 @@ int main(){
 			if(strcmp("Bye!", buffer) == 0){
 				end = 1;
 			}
+			
+			printf("M: %s\n", buffer);
 
-			memset(buffer, 0, sizeof(buffer));	
 			t = sendto(sock, buffer, strlen(buffer), 0, (struct sockaddr *)&server, len);
 
 			if(t < 0){
